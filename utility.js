@@ -73,9 +73,20 @@ function handleGameWin() {
     ctx.fillText('Congrulation!', 70, 140);
     gameOver = true;
 }
-//collision with player
-function checkCollision() {
-    for(let i = 0; i < arrayEnemys.length; i++){
+
+//draw enemys
+function generateEnemys() {
+    for (let i = 0; i < 8; i++) {
+        arrayEnemys.push(new Enemy());
+    }
+
+}
+function drawEnemys() {
+    for (let i = 0; i < arrayEnemys.length; i++) {
+        console.log(arrayEnemys[i]);
+        arrayEnemys[i].draw();
+        arrayEnemys[i].update();
+        //collision with player
         const dx = arrayEnemys[i].x - player.x;
         const dy = arrayEnemys[i].y - player.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -91,21 +102,6 @@ function checkCollision() {
                 handleGameOver();
             }
         }
-    }   
-}
-//draw enemys
-function generateEnemys() {
-    for (let i = 0; i < 8; i++) {
-        arrayEnemys.push(new Enemy());
-    }
-
-}
-function drawEnemys() {
-    for (let i = 0; i < arrayEnemys.length; i++) {
-        console.log(arrayEnemys[i]);
-        arrayEnemys[i].draw();
-        arrayEnemys[i].update();
-
 
     }
 }
@@ -122,7 +118,7 @@ function animate() {
     player.update();
     player.draw();
     drawEnemys();
-    checkCollision();
+    //checkCollision();
     ctx.fillStyle = 'black';
     ctx.fillText('score:' + score, 10, 30);
     gameFrame++;
