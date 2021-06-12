@@ -11,6 +11,9 @@ class Player{
         this.spriteW=498;
         this.spriteH=327;
     }
+    setRadius(){
+        this.radius=(55*4)/this.size;
+    }
     initPosition(){
         this.angle=0;
         this.frame=0;
@@ -52,11 +55,13 @@ class Player{
              ctx.lineTo(mouse.x,mouse.y);
              ctx.stroke();
          }
+         /*
          ctx.fillStyle='blue';
          ctx.beginPath();
          ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
          ctx.fill();
          ctx.closePath();
+         */
          //ctx.fillRect(this.x,this.y,this.radius,10);
          ctx.save();
          ctx.translate(this.x,this.y);

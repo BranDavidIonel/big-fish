@@ -1,6 +1,6 @@
 class Enemy{
     constructor(){
-        this.x=canvas.width-200;
+        this.x=canvas.width+200;
         this.y=Math.random()*(canvas.height-150)+90;
         this.speed=Math.random()*0.5+0.4;
         this.size=Math.floor(Math.random()*10*9+1)
@@ -12,12 +12,13 @@ class Enemy{
         this.spriteH=397;
     }
     draw(){
-        
+        /*
         ctx.fillStyle="red";
         ctx.beginPath();
         ctx.arc(this.x,this.y, this.radius,0,Math.PI*2);
         ctx.fill();
         ctx.closePath();
+        */
         ctx.drawImage(enemyImage,this.frameX*this.spriteW,this.frameY*this.spriteH,this.spriteW,this.spriteH,this.x-180/this.size,this.y-210/this.size,this.spriteW/this.size,this.spriteH/this.size);
     }
     update(){
@@ -40,13 +41,7 @@ class Enemy{
             else if(this.frameY<11) this.frameY=2;
             else this.frameY=0;
         }
-        //collision with player
-        const dx=this.x-player.x;
-        const dy=this.y-player.y;
-        const distance=Math.sqrt(dx*dx+dy*dy);
-        if(distance<this.radius+player.radius){
-            handleGameOver();
-        }
+      
 
     }
 }
