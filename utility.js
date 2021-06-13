@@ -2,13 +2,19 @@
 
 //reset game
 function resetGame() {
-    arrayEnemys.length=0;
-    generateEnemys(); 
+    //arrayEnemys.length = 0;
+    for (let i = 0; i < arrayEnemys.length; i++) {
+        arrayEnemys.splice(i, 1);
+        i--;
+    }
+    generateEnemys(15);
     gameOver = false;
     player = new Player();
     score = 0;
     //generateEnemys();
+    if(gameOver){
     animate();
+    }
 }
 //mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect();
@@ -54,28 +60,27 @@ function handleBackground() {
 const enemyImage = new Image();
 enemyImage.src = 'fish_enemy_swim.png';
 
-//const enemy1=new Enemy();
-enemy1 = new Enemy();
-function handleEnemies() {
-    enemy1.draw();
-    enemy1.update();
 
-
-}
 function handleGameOver() {
     ctx.fillStyle = "red";
     ctx.fillText('GAME OVER, you reached score ' + score + '!', 70, 140);
     gameOver = true;
 
 }
-function handleGameWin(message='!!!') {
+function handleGameWin(message = '!!!') {
     ctx.fillStyle = "blue";
-    ctx.fillText('Congrulation!'+message, 70, 140);
+    ctx.fillText('Congrulation!' + message, 70, 140);
     gameOver = true;
 }
 
 //draw enemys
 function generateEnemys(nr) {
+    /*
+    for (let i = 0; i < arrayEnemys.length; i++) {
+        arrayEnemys.splice(i, 1);
+        i--;
+    }
+    */
     for (let i = 0; i < nr; i++) {
         arrayEnemys.push(new Enemy());
     }
@@ -93,13 +98,13 @@ function drawEnemys() {
         if (distance < arrayEnemys[i].radius + player.radius) {
             //I eat enemy
             if (arrayEnemys[i].radius < player.radius) {
-                arrayEnemys.splice(i,1);
+                arrayEnemys.splice(i, 1);
                 i--;
                 player.size /= 1.03;
-                if(player.radius>150){
+                if (player.radius > 150) {
                     handleGameWin('You ruined the ecosystem.');
                 }
-                generateEnemys(Math.floor(Math.random()*4+1));
+                generateEnemys(Math.floor(Math.random()*8+1));
                 player.setRadius();
             } else {
                 handleGameOver();
@@ -108,7 +113,7 @@ function drawEnemys() {
 
     }
 }
-generateEnemys(10);
+generateEnemys(15);
 //animation loop
 function animate() {
 
@@ -120,6 +125,13 @@ function animate() {
     handleBubbles();
     player.update();
     player.draw();
+    var d = new Date();
+    var n = d.getSeconds();
+    /*
+    if(n%15==0){
+        generateEnemys(Math.random()*2+2);
+    }
+    */
     drawEnemys();
     //checkCollision();
     ctx.fillStyle = 'yellow';
