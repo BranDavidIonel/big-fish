@@ -5,6 +5,6 @@ canvas.width=800;
 canvas.height=600;
 let score=0;
 let gameFrame=0;
-ctx.font="29px Georgia";
+ctx.font="32px Georgia";
 let gameOver=false;
 const arrayEnemys=[];

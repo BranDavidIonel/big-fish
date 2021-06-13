@@ -83,7 +83,7 @@ function generateEnemys(nr) {
 }
 function drawEnemys() {
     for (let i = 0; i < arrayEnemys.length; i++) {
-        console.log(arrayEnemys[i]);
+        //console.log(arrayEnemys[i]);
         arrayEnemys[i].draw();
         arrayEnemys[i].update();
         //collision with player
@@ -96,7 +96,7 @@ function drawEnemys() {
                 arrayEnemys.splice(i,1);
                 i--;
                 player.size /= 1.03;
-                if(player.radius>200){
+                if(player.radius>150){
                     handleGameWin('You ruined the ecosystem.');
                 }
                 generateEnemys(Math.floor(Math.random()*2+1));
@@ -108,7 +108,7 @@ function drawEnemys() {
 
     }
 }
-generateEnemys(25);
+generateEnemys(30);
 //animation loop
 function animate() {
 
@@ -122,7 +122,7 @@ function animate() {
     player.draw();
     drawEnemys();
     //checkCollision();
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'yellow';
     ctx.fillText('score:' + score, 10, 30);
     gameFrame++;
 
