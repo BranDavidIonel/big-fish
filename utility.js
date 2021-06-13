@@ -2,19 +2,22 @@
 
 //reset game
 function resetGame() {
+   
     //arrayEnemys.length = 0;
     for (let i = 0; i < arrayEnemys.length; i++) {
         arrayEnemys.splice(i, 1);
         i--;
     }
     generateEnemys(15);
-    gameOver = false;
+  
     player = new Player();
     score = 0;
     //generateEnemys();
     if(gameOver){
+    gameOver = false;
     animate();
     }
+  
 }
 //mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect();
