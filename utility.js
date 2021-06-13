@@ -99,7 +99,7 @@ function drawEnemys() {
                 if(player.radius>150){
                     handleGameWin('You ruined the ecosystem.');
                 }
-                generateEnemys(Math.floor(Math.random()*2+1));
+                generateEnemys(Math.floor(Math.random()*4+1));
                 player.setRadius();
             } else {
                 handleGameOver();
@@ -108,7 +108,7 @@ function drawEnemys() {
 
     }
 }
-generateEnemys(30);
+generateEnemys(10);
 //animation loop
 function animate() {
 
