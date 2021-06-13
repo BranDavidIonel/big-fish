@@ -2,7 +2,7 @@ class Player{
     constructor(){
         this.x=0;
         this.y=canvas.height/4;
-        this.size=Math.floor(Math.random()*10*5+12)
+        this.size=Math.floor(Math.random()*10+52)
         this.radius=(55*4)/this.size;
         this.angle=0;
         this.frame=0;

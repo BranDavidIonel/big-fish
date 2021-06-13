@@ -49,7 +49,7 @@ function handleBubbles(){
                     }
                     score++;
                     checkScore();
-                    player.size/=1.01;
+                    player.size/=1.03;
                     player.setRadius();
                     bubblesArray[i].counted=true;
                     bubblesArray.splice(i,1);

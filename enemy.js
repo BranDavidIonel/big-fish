@@ -3,7 +3,7 @@ class Enemy{
         this.x=canvas.width+200;
         this.y=Math.random()*(canvas.height-150)+90;
         this.speed=Math.random()*0.5+0.4;
-        this.size=Math.floor(Math.random()*10*9+1)
+        this.size=Math.floor(Math.random()*10*7+8)
         this.radius=55*3/this.size;
         this.frame=0;
         this.frameX=0;

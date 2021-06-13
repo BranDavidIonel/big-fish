@@ -68,15 +68,15 @@ function handleGameOver() {
     gameOver = true;
 
 }
-function handleGameWin() {
+function handleGameWin(message='!!!') {
     ctx.fillStyle = "blue";
-    ctx.fillText('Congrulation!', 70, 140);
+    ctx.fillText('Congrulation!'+message, 70, 140);
     gameOver = true;
 }
 
 //draw enemys
-function generateEnemys() {
-    for (let i = 0; i < 8; i++) {
+function generateEnemys(nr) {
+    for (let i = 0; i < nr; i++) {
         arrayEnemys.push(new Enemy());
     }
 
@@ -95,8 +95,11 @@ function drawEnemys() {
             if (arrayEnemys[i].radius < player.radius) {
                 arrayEnemys.splice(i,1);
                 i--;
-                player.size /= 1.01;
-                generateEnemys();
+                player.size /= 1.03;
+                if(player.radius>200){
+                    handleGameWin('You ruined the ecosystem.');
+                }
+                generateEnemys(Math.floor(Math.random()*2+1));
                 player.setRadius();
             } else {
                 handleGameOver();
@@ -105,7 +108,7 @@ function drawEnemys() {
 
     }
 }
-generateEnemys();
+generateEnemys(25);
 //animation loop
 function animate() {
 
