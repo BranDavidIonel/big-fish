@@ -7,4 +7,5 @@ let score=0;
 let gameFrame=0;
 ctx.font="32px Georgia";
 let gameOver=false;
+let nrMaxEnemys=250;
 const arrayEnemys=[];

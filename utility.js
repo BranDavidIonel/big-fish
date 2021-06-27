@@ -2,22 +2,22 @@
 
 //reset game
 function resetGame() {
-   
+
     //arrayEnemys.length = 0;
     for (let i = 0; i < arrayEnemys.length; i++) {
         arrayEnemys.splice(i, 1);
         i--;
     }
     generateEnemys(15);
-  
+
     player = new Player();
     score = 0;
     //generateEnemys();
-    if(gameOver){
-    gameOver = false;
-    animate();
+    if (gameOver) {
+        gameOver = false;
+        animate();
     }
-  
+
 }
 //mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect();
@@ -79,14 +79,19 @@ function handleGameWin(message = '!!!') {
 //draw enemys
 function generateEnemys(nr) {
     /*
+    //delete enemys
     for (let i = 0; i < arrayEnemys.length; i++) {
         arrayEnemys.splice(i, 1);
         i--;
     }
     */
-    for (let i = 0; i < nr; i++) {
-        arrayEnemys.push(new Enemy());
+    //check number of enemy
+    if (arrayEnemys.length < nrMaxEnemys) {
+        for (let i = 0; i < nr; i++) {
+            arrayEnemys.push(new Enemy());
+        }
     }
+    //console.log(arrayEnemys.length);
 
 }
 function drawEnemys() {
@@ -107,7 +112,7 @@ function drawEnemys() {
                 if (player.radius > 150) {
                     handleGameWin('You ruined the ecosystem.');
                 }
-                generateEnemys(Math.floor(Math.random()*8+1));
+                generateEnemys(Math.floor(Math.random() * 8 + 1));
                 player.setRadius();
             } else {
                 handleGameOver();
